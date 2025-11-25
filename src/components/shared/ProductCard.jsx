@@ -3,7 +3,7 @@ const ProductCard = ({ product, onAddToCart }) => {
   return (
     <div style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '1rem', textAlign: 'center' }}>
       <img
-        src={product.image.startsWith('http') ? product.image : `${process.env.PUBLIC_URL}/images${product.image}`}
+        src={product.image.startsWith('http') ? product.image : `${process.env.PUBLIC_URL}/caribe-supply/images${product.image}`}
         alt={product.name}
         onError={(e) => (e.target.src = 'https://via.placeholder.com/250?text=Sin+imagen')}
         style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '4px' }}
