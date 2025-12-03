@@ -1,7 +1,7 @@
-
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import ThemeToggle from '../shared/ThemeToggle';
 
 const Navbar = () => {
   const { user, logout, cart } = useContext(AppContext);
@@ -115,6 +115,10 @@ const Navbar = () => {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         {renderAuthLinks()}
+        <button onClick={() => window.dispatchEvent(new CustomEvent('open-product-form'))} style={{...buttonStyle, marginLeft: '0.5rem'}}>
+          Añadir producto
+        </button>
+        <ThemeToggle />
       </div>
     </nav>
   );

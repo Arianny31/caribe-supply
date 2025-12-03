@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider, AppContext } from './context/AppContext';
@@ -18,6 +17,11 @@ import Support from './pages/Support';
 // Layout
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+
+import { CartProvider } from './context/CartContext.jsx';
+import { CustomThemeProvider } from './context/ThemeContext.jsx';
+import CartSnackbar from './components/shared/CartSnackbar';
+import ProductFormLauncher from './components/shared/ProductFormLauncher';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AppContext);
@@ -67,9 +71,15 @@ function AppContent() {
 function App() {
   return (
     <AppProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <CustomThemeProvider>
+        <CartProvider>
+          <Router>
+            <AppContent />
+            <CartSnackbar />
+            <ProductFormLauncher />
+          </Router>
+        </CartProvider>
+      </CustomThemeProvider>
     </AppProvider>
   );
 }
